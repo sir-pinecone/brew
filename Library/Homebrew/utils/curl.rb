@@ -23,6 +23,8 @@ def curl_args(*extra_args, show_output: false, user_agent: :default)
 
   args << "--show-error"
 
+  args << "--insecure" if MacOS.version <= 10.11
+
   args << "--user-agent" << case user_agent
   when :browser, :fake
     HOMEBREW_USER_AGENT_FAKE_SAFARI
